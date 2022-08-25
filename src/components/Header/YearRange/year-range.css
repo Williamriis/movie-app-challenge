@@ -1,7 +1,8 @@
 .year-range__container {
     display: flex;
     flex-direction: column;
-    color: white;
+    font-size: 14px;
+    margin-right: 20px;
 }
 
 .year-range__sub-container {

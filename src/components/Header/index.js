@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SearchField from './SearchField';
 import YearRange from './YearRange'
 import RadioButton from './RadioButton'
 import config from '../../config';
@@ -13,21 +14,22 @@ const Header = ({ setSearchTerm, setYearRange, setMediaType, mediaType, yearRang
     return (
         <header className='header__container'>
             <form onSubmit={(e) => onSubmit(e)} className='header__form'>
-                <input type='text' onChange={(e) => setSearchTerm(e.target.value)}></input>
-                <YearRange
-                    changeEvent={setYearRange}
-                    min={config.YEAR_OPTIONS_MIN}
-                    max={config.YEAR_OPTIONS_MAX}
-                    current={yearRange}
-                />
-                <RadioButton
-                    optionsArray={config.MEDIA_TYPE_OPTIONS}
-                    changeEvent={setMediaType}
-                    current={mediaType}
-                    setName='media'
-                />
+                <SearchField changeEvent={setSearchTerm} />
+                <div className='header__filter-container'>
+                    <YearRange
+                        changeEvent={setYearRange}
+                        min={config.YEAR_OPTIONS_MIN}
+                        max={config.YEAR_OPTIONS_MAX}
+                        current={yearRange}
+                    />
+                    <RadioButton
+                        optionsArray={config.MEDIA_TYPE_OPTIONS}
+                        changeEvent={setMediaType}
+                        current={mediaType}
+                        setName='media'
+                    />
+                </div>
             </form>
-
         </header>
     )
 }
