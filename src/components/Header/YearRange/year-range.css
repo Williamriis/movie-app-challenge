@@ -1,0 +1,9 @@
+.year-range__container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.year-range__sub-container {
+    display: flex;
+}

@@ -1,0 +1,11 @@
+.header__container {
+    background: #727171;
+    width: 100%;
+    padding: 30px 10px;
+}
+
+.header__form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
