@@ -1,0 +1,91 @@
+.selected-item__container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+.selected-item__main-container {
+    display: flex;
+}
+
+.selected-item__main-image {
+    width: 35%;
+    border-radius: 5px;
+}
+
+.selected-item__main-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 10px;
+}
+
+.selected-item__main-title {
+    font-size: 30px;
+    margin: 15px 0;
+    color: black;
+}
+
+.selected-item__main-extra {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.selected-item__main-rated {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 0 8px;
+}
+
+.selected-item__main-year {
+    margin: 0 5px;
+}
+
+.selected-item__main-genre {
+    display: flex;
+    align-items: center;
+}
+
+.selected-item__main-genre-dots {
+    font-size: 8px;
+    padding: 0 3px;
+}
+
+.selected-item__main-actors {
+    margin: 5px 0 0;
+}
+
+.selected-item__description-container {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin: 16px 0;
+}
+
+.selected-item__description {
+    line-height: 1.5;
+}
+
+.selected-item__review-container {
+    display: flex;
+    justify-content: center;
+}
+
+.selected-item__review {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    text-align: center;
+    padding: 0 30px;
+}
+
+.selected-item__review:first-child {
+    border-left: none;
+}
+
+.selected-item__review:last-child {
+    border-right: none;
+}
+
+.selected-item__review-source {
+    font-size: 13px;
+}

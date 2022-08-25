@@ -46,6 +46,9 @@ const App = () => {
             }
             const url = `${API_URL}&${queryString.stringify(queryObject, { skipEmptyString: true })}`
             const onSuccess = (data) => {
+                if (Number(data.totalResults) === 1) {
+                    setSearchId(data.Search[0].imdbID)
+                }
                 setFilmList(data.Search)
                 setTotalResults(data.totalResults)
             }
