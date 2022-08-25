@@ -2,18 +2,19 @@ import React from 'react';
 
 import SearchResultItem from './SearchResultItem';
 import SelectedItem from './SelectedItem';
+import './search-result.css';
 
 
-const SearchResult = ({ filmList, selectedFilm, totalResults }) => {
+const SearchResult = ({ filmList, selectedFilm, setSearchId, totalResults }) => {
 
     return (
         <section>
-            {filmList && filmList.length > 0 &&
+            {Number(totalResults) > 0 &&
                 <div>
                     <div>
                         <p>{totalResults} RESULTS</p>
-                        <ul>
-                            {filmList.map((film) => <SearchResultItem film={film} />)}
+                        <ul className='search-result__list'>
+                            {filmList.map((film) => <SearchResultItem film={film} clickEvent={setSearchId} />)}
                         </ul>
                     </div>
                     {selectedFilm &&
@@ -22,7 +23,8 @@ const SearchResult = ({ filmList, selectedFilm, totalResults }) => {
                         </div>}
                 </div>
             }
-            <h1>NO RESULT COMPONENT.</h1>
+            {!Number(totalResults) &&
+                <h1>NO RESULT COMPONENT.</h1>}
         </section>
     )
 }

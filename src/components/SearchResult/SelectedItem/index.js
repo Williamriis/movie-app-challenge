@@ -4,7 +4,7 @@ const SelectedItem = ({ item }) => {
 
     return (
         <div>
-            {item.title}
+            {item.Title}
         </div>
     )
 }

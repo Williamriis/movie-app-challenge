@@ -1,10 +1,18 @@
 import React from 'react';
 
-const SearchResultItem = ({ film }) => {
+import './search-result-item.css';
+
+const SearchResultItem = ({ film, clickEvent }) => {
 
     return (
-        <li>
-            {film.Title}
+        <li onClick={() => clickEvent(film.imdbID)} className='search-item__container'>
+
+            <img src={film.Poster} className='search-item__image' />
+
+            <div className='search-item__text-container'>
+                <p className='search-item__title'>{film.Title}</p>
+                <p className='search-item__year'>{film.Year}</p>
+            </div>
         </li>
     )
 }
