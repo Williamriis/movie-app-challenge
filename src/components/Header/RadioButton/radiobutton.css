@@ -6,20 +6,56 @@
     flex-direction: column;
 }
 
+.radio-button__title {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+}
+
 .radio-button__container {
     display: flex;
 }
 
 .radio-button__button-container {
-    margin-left: 5px;
+    margin-left: 15px;
     display: flex;
     align-items: center;
 }
 
-.radio-button__button {
+.radio-button__button-container:first-child {
     margin: 0;
 }
 
+.radio-button__button {
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    font: inherit;
+    width: 1em;
+    height: 1em;
+    border: 0.15em solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-button__button::before {
+    content: "";
+    display: block;
+    width: 0.50em;
+    height: 0.50em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: white;
+}
+
+.radio-button__button:checked::before {
+    transform: scale(1);
+}
+
 .radio-button__label {
-    margin-left: 3px;
+    margin-left: 8px;
+    font-size: 14px;
 }

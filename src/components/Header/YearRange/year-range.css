@@ -2,9 +2,41 @@
     display: flex;
     flex-direction: column;
     font-size: 14px;
-    margin-right: 20px;
+    margin-right: 25px;
+}
+
+.year-range__title {
+    margin: 0 0 8px 0;
 }
 
 .year-range__sub-container {
     display: flex;
+    align-items: center;
+}
+
+.year-range__slider {
+    -webkit-appearance: none;
+    height: 5px;
+    margin: 0 10px;
+}
+
+.year-range__slider:active {
+    cursor: grab;
+}
+
+.year-range__slider::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 8px;
+    background: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.year-range__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: darkgray;
+    margin-top: -4px;
 }
