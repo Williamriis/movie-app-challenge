@@ -1,11 +1,23 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilmDetails } from '../../redux/filmSearchSlice';
 import SearchResultItem from './SearchResultItem';
 import SelectedItem from './SelectedItem';
 import './search-result.css';
 
 
-const SearchResult = ({ filmList, selectedFilm, setSearchId, totalResults }) => {
+const SearchResult = () => {
+    const dispatch = useDispatch()
+    const [filmId, setFilmId] = useState('')
+    const filmList = useSelector((store) => store.filmSearchSlice.filmList)
+    const totalResults = useSelector((store) => store.filmSearchSlice.totalResults)
+    const filmDetail = useSelector((store) => store.filmSearchSlice.filmDetail)
+
+    useEffect(() => {
+        if (filmId) {
+            dispatch(getFilmDetails({ filmId }))
+        }
+    }, [filmId])
 
     return (
         <section className='search-result__container'>
@@ -14,12 +26,12 @@ const SearchResult = ({ filmList, selectedFilm, setSearchId, totalResults }) => 
                     <div className='search-result__list-container'>
                         <p className='search-result__total-count'>{totalResults} RESULTS</p>
                         <ul className='search-result__list'>
-                            {filmList.map((film) => <SearchResultItem film={film} clickEvent={setSearchId} />)}
+                            {filmList.map((film) => <SearchResultItem film={film} clickEvent={setFilmId} key={film.imdbID} />)}
                         </ul>
                     </div>
-                    {selectedFilm &&
+                    {filmDetail &&
                         <div className='search-result__selected-container'>
-                            <SelectedItem item={selectedFilm} />
+                            <SelectedItem item={filmDetail} />
                         </div>}
                 </div>
             }

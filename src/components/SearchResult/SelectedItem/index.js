@@ -7,7 +7,7 @@ const SelectedItem = ({ item }) => {
     return (
         <div className='selected-item__container'>
             <div className="selected-item__main-container">
-                <img className='selected-item__main-image' src={item.Poster} />
+                <img className='selected-item__main-image' src={item.Poster} alt={item.Title} />
                 <div className='selected-item__main-details'>
                     <h1 className='selected-item__main-title'>{item.Title}</h1>
                     <div className='selected-item__main-extra'>
@@ -26,7 +26,7 @@ const SelectedItem = ({ item }) => {
             </div>
             <div className='selected-item__review-container'>
                 {item.Ratings.map((rating) => {
-                    return <div className='selected-item__review'>
+                    return <div className='selected-item__review' key={rating.Source}>
                         <p className='selected-item__review-score'>{rating.Value}</p>
                         <p className='selected-item__review-source'>{rating.Source}</p>
                     </div>

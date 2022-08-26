@@ -1,15 +1,34 @@
-import React from 'react';
-
+import React, { useEffect, useState, useCallback } from 'react';
+import _ from 'lodash';
+import { useDispatch } from 'react-redux';
+import { getFilmList } from '../../redux/filmSearchSlice';
 import SearchField from './SearchField';
 import YearRange from './YearRange'
 import RadioButton from './RadioButton'
 import config from '../../config';
 import './header.css';
 
-const Header = ({ setSearchTerm, setYearRange, setMediaType, mediaType, yearRange }) => {
+const Header = () => {
+    const dispatch = useDispatch()
+    const [searchTerm, setSearchTerm] = useState('')
+    const [yearRange, setYearRange] = useState('')
+    const [mediaType, setMediaType] = useState('')
+
     const onSubmit = (e) => {
         e.preventDefault()
     }
+
+    const delayedQuery = useCallback(_.debounce((filters) => dispatch(getFilmList({ filters })), 500), [])
+
+    useEffect(() => {
+        if (searchTerm) { // Remove so that clearing search input wipes search?
+            const filters = {
+                searchTerm, yearRange, mediaType
+            }
+            delayedQuery(filters)
+        }
+    }, [searchTerm, yearRange, mediaType])
+
 
     return (
         <header className='header__container'>
