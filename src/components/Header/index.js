@@ -18,7 +18,7 @@ const Header = () => {
         e.preventDefault()
     }
 
-    const delayedQuery = useCallback(_.debounce((filters) => dispatch(getFilmList({ filters })), 500), [])
+    const delayedQuery = useCallback(_.debounce((filters) => dispatch(getFilmList({ filters })), 300), [])
 
     useEffect(() => {
         if (searchTerm) { // Remove so that clearing search input wipes search?

@@ -7,6 +7,18 @@
 
 .year-range__title {
     margin: 0 0 8px 0;
+    display: inline-block;
+}
+
+.year-range__clear {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: inline;
+}
+
+.year-range__clear:hover {
+    cursor: pointer;
 }
 
 .year-range__sub-container {
