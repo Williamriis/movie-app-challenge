@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import queryString from 'query-string';
-
 import config from '../config';
 
 
@@ -8,35 +7,27 @@ const initialState = {
     filmList: [],
     filmId: '',
     filmDetail: false,
-    totalResults: 0
+    totalResults: 0,
+    errorMessage: '',
+    listLoading: false,
+    detailLoading: false
 };
 
 const filmSearchSlice = createSlice({
     name: "filmSearchSlice",
     initialState: initialState,
     reducers: {
-
-        updateFilmList: (state, action) => {
-            const { filmList } = action.payload;
-            state.filmList = filmList
-        },
-        setFilmId: (state, action) => {
-            const { filmId } = action.payload
-            state.filmId = filmId
-        },
-        setTotalResults: (state, action) => {
-            const { totalResults } = action.payload
-            state.totalResults = totalResults
-        },
-        setFilmDetail: (state, action) => {
-            const { filmDetail } = action.payload
-            state.filmDetail = filmDetail
+        setState: (state, action) => {
+            for (const [key, value] of Object.entries(action.payload)) {
+                state[key] = value
+            }
         }
     }
 });
 
 export const getFilmList = ({ filters }) => {
     return (dispatch) => {
+        dispatch(setState({ listLoading: true }))
         const queryObject = {
             s: filters.searchTerm,
             y: filters.yearRange,
@@ -46,45 +37,42 @@ export const getFilmList = ({ filters }) => {
 
         fetch(url).then(response => {
             if (!response.ok) {
-                console.log('failed')
+                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', listLoading: false }))
             }
             return response.json()
         }).then(data => {
             if (data.Response === 'True') {
-                dispatch(updateFilmList({ filmList: data.Search }))
-                dispatch(setTotalResults({ totalResults: data.totalResults }))
+                dispatch(setState({ filmList: data.Search, totalResults: data.totalResults, errorMessage: '', listLoading: false }))
             } else {
-                dispatch(updateFilmList({ filmList: [] }))
-                dispatch(setTotalResults({ totalResults: 0 }))
+                dispatch(setState({ filmList: [], totalResults: 0, errorMessage: `No results matched your search for '${filters.searchTerm}'.`, listLoading: false }))
             }
 
-        }).catch(error => console.log(error))
+        }).catch(error => dispatch(setState({ errorMessage: error, listLoading: false })))
 
     }
 }
 
 export const getFilmDetails = ({ filmId }) => {
     return (dispatch) => {
+        dispatch(setState({ detailLoading: true }))
         const url = `${config.BASE_API}&i=${filmId}`
 
         fetch(url).then(response => {
             if (!response.ok) {
-                console.log('failed')
+                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', detailLoading: false }))
             }
             return response.json()
         }).then(data => {
             if (data.Response === 'True') {
-                dispatch(setFilmDetail({ filmDetail: data }))
+                dispatch(setState({ filmDetail: data, errorMessage: '', detailLoading: false }))
             } else {
-                console.log('Failure')
+                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', detailLoading: false }))
             }
-        }).catch(error => console.log(error))
+        }).catch(error => dispatch(setState({ errorMessage: error, detailLoading: false })))
 
     }
 }
 
-
-
-export const { updateFilmList, setFilmId, setTotalResults, setFilmDetail } = filmSearchSlice.actions
+export const { setState } = filmSearchSlice.actions
 
 export default filmSearchSlice.reducer

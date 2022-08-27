@@ -9,9 +9,7 @@ import './search-result.css';
 const SearchResult = () => {
     const dispatch = useDispatch()
     const [filmId, setFilmId] = useState('')
-    const filmList = useSelector((store) => store.filmSearchSlice.filmList)
-    const totalResults = useSelector((store) => store.filmSearchSlice.totalResults)
-    const filmDetail = useSelector((store) => store.filmSearchSlice.filmDetail)
+    const { filmList, totalResults, filmDetail, listLoading, detailLoading } = useSelector((store) => store.filmSearchSlice)
 
     useEffect(() => {
         if (filmId) {
