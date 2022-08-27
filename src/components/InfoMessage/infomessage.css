@@ -1,0 +1,19 @@
+.info-message__container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-message__content-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.info-message__message {
+    width: 70%;
+    font-size: 25px;
+    font-weight: bold;
+}

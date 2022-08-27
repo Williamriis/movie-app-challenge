@@ -8,7 +8,8 @@ const initialState = {
     filmId: '',
     filmDetail: false,
     totalResults: 0,
-    errorMessage: '',
+    listError: '',
+    detailError: '',
     listLoading: false,
     detailLoading: false
 };
@@ -37,17 +38,17 @@ export const getFilmList = ({ filters }) => {
 
         fetch(url).then(response => {
             if (!response.ok) {
-                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', listLoading: false }))
+                dispatch(setState({ listError: 'An error occurred. Please try again.', listLoading: false }))
             }
             return response.json()
         }).then(data => {
             if (data.Response === 'True') {
-                dispatch(setState({ filmList: data.Search, totalResults: data.totalResults, errorMessage: '', listLoading: false }))
+                dispatch(setState({ filmList: data.Search, totalResults: data.totalResults, listError: '', listLoading: false }))
             } else {
-                dispatch(setState({ filmList: [], totalResults: 0, errorMessage: `No results matched your search for '${filters.searchTerm}'.`, listLoading: false }))
+                dispatch(setState({ filmList: [], totalResults: 0, listError: `No results matched your search for '${filters.searchTerm}'.`, listLoading: false }))
             }
 
-        }).catch(error => dispatch(setState({ errorMessage: error, listLoading: false })))
+        }).catch(error => dispatch(setState({ listError: error, listLoading: false })))
 
     }
 }
@@ -59,16 +60,16 @@ export const getFilmDetails = ({ filmId }) => {
 
         fetch(url).then(response => {
             if (!response.ok) {
-                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', detailLoading: false }))
+                dispatch(setState({ detailError: 'An error occurred. Please try again.', detailLoading: false }))
             }
             return response.json()
         }).then(data => {
             if (data.Response === 'True') {
-                dispatch(setState({ filmDetail: data, errorMessage: '', detailLoading: false }))
+                dispatch(setState({ filmDetail: data, detailError: '', detailLoading: false }))
             } else {
-                dispatch(setState({ errorMessage: 'An error occurred. Please try again.', detailLoading: false }))
+                dispatch(setState({ detailError: 'An error occurred. Please try again.', detailLoading: false }))
             }
-        }).catch(error => dispatch(setState({ errorMessage: error, detailLoading: false })))
+        }).catch(error => dispatch(setState({ detailError: error, detailLoading: false })))
 
     }
 }

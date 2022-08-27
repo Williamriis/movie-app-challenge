@@ -13,6 +13,7 @@ const SearchField = ({ changeEvent }) => {
                 onChange={(e) => changeEvent(e.target.value)}
                 className='header__search-input'
                 autoFocus
+                placeholder='Discover here..'
             />
         </div>
     )

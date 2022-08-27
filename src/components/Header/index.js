@@ -10,6 +10,7 @@ import './header.css';
 
 const Header = () => {
     const dispatch = useDispatch()
+    const [rendered, setRendered] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
     const [yearRange, setYearRange] = useState('')
     const [mediaType, setMediaType] = useState('')
@@ -21,11 +22,13 @@ const Header = () => {
     const delayedQuery = useCallback(_.debounce((filters) => dispatch(getFilmList({ filters })), 300), [])
 
     useEffect(() => {
-        if (searchTerm) { // Remove so that clearing search input wipes search?
+        if (rendered) {
             const filters = {
                 searchTerm, yearRange, mediaType
             }
             delayedQuery(filters)
+        } else {
+            setRendered(true)
         }
     }, [searchTerm, yearRange, mediaType])
 
