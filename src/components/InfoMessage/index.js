@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoIcon from './InfoIcon';
+import InfoIcon from '../Icons/Info/InfoIcon';
 import './infomessage.css';
 
 const InfoMessage = ({ message }) => {

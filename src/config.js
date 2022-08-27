@@ -7,7 +7,8 @@ const config = {
         { name: 'Movie', value: 'movie' },
         { name: 'Series', value: 'series' },
         { name: 'Episode', value: 'episode' }
-    ]
+    ],
+    WATCHLIST_KEY: 'watchlist'
 }
 
 export default config
