@@ -1,8 +1,6 @@
 .selected-item__container {
-    display: flex;
-    flex-direction: column;
     padding: 20px;
-
+    position: relative;
 }
 
 .selected-item__main-container {

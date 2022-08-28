@@ -1,0 +1,21 @@
+.watchlist__button {
+    background: transparent;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    position: absolute;
+    right: 20px;
+    padding: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.watchlist__button:hover {
+    cursor: pointer;
+    background: darkgray;
+    color: white;
+}
+
+.watchlist__button-text {
+    margin-left: 8px;
+}

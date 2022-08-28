@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFilm, removeFilm } from '../../../../redux/watchlistSlice';
+import AddBookmark from '../../../Icons/Bookmark';
+import './watchlist-button.css';
 
 const WatchlistButton = ({ filmId }) => {
     const dispatch = useDispatch()
@@ -15,7 +17,10 @@ const WatchlistButton = ({ filmId }) => {
     }, [filmId, isOnWatchlist])
 
     return (
-        <button onClick={onClick}>{isOnWatchlist ? 'REMOVE' : 'ADD'}</button>
+        <button className='watchlist__button' onClick={onClick}>
+            <AddBookmark add={!isOnWatchlist} />
+            <span className='watchlist__button-text'>Watchlist</span>
+        </button>
     )
 }
 

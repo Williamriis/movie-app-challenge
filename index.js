@@ -4,7 +4,6 @@ import { store } from './src/redux/store';
 import { createRoot } from 'react-dom/client';
 import config from './src/config';
 import { persistState } from './src/utils';
-
 import './index.css';
 import App from './src/App';
 

@@ -6,8 +6,9 @@ const SelectedItem = ({ item }) => {
 
     return (
         <div className='selected-item__container'>
+            <WatchlistButton filmId={item.imdbID} />
             <div className="selected-item__main-container">
-                <WatchlistButton filmId={item.imdbID} />
+
                 <img className='selected-item__main-image' src={item.Poster} alt={item.Title} />
                 <div className='selected-item__main-details'>
                     <h1 className='selected-item__main-title'>{item.Title}</h1>
