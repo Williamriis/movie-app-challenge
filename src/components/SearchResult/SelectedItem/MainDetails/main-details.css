@@ -1,0 +1,53 @@
+.selected-item__main-container {
+    display: flex;
+}
+
+.selected-item__main-image {
+    width: 35%;
+    border-radius: 5px;
+}
+
+.selected-item__main-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 10px;
+}
+
+.selected-item__main-title {
+    font-size: 30px;
+    margin: 15px 0;
+    color: black;
+}
+
+.selected-item__main-extra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.selected-item__main-rated {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 0 8px;
+    margin-right: 5px;
+}
+
+.selected-item__main-year {
+    margin: 0 5px;
+}
+
+.selected-item__main-genre {
+    display: flex;
+    align-items: center;
+}
+
+.selected-item__main-genre-dots {
+    font-size: 8px;
+    padding: 0 3px;
+}
+
+.selected-item__main-actors {
+    margin: 5px 0 0;
+}
