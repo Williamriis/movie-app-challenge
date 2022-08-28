@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './radiobutton.css'
+import './radio-button.css'
 
 const RadioButton = ({ optionsArray, changeEvent, current, setName }) => {
 

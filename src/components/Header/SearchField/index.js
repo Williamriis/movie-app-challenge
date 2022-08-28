@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchIcon from '../../Icons/Search/SearchIcon';
-import './searchfield.css'
+import './search-field.css'
 
 const SearchField = ({ changeEvent }) => {
 

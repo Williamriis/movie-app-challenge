@@ -1,6 +1,6 @@
 import React from 'react';
 import InfoIcon from '../Icons/Info/InfoIcon';
-import './infomessage.css';
+import './info-message.css';
 
 const InfoMessage = ({ message }) => {
 
